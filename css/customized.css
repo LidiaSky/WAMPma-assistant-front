@@ -1,8 +1,6 @@
 .landing_container_bg {
 
     padding-top:70px;
-
-
 }
 body {
     padding-top:70px;
@@ -14,6 +12,7 @@ opacitycss {
     margin-top:20px;
     margin-bottom:40px;
 }
-opacity1 {
-
+.bgr {
+    background:white;
 }
+

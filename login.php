@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,8 +34,8 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class = "nav navbar-nav navbar-right">
-                <li class = "active"><a href= "search.php">Поиск</a></li>
-                <li><a href= "login.php">Войти </a></li>
+                <li ><a href= "search.php">Поиск</a></li>
+                <li class = "active"><a href= "#">Войти </a></li>
 
                 <li><a href= "search.html">Регистрация</a></li>
             </ul>
@@ -44,14 +45,10 @@
 </div>
 
 <div class = "container search_container_bg">
-    <div class = "jumbotron text-center ">
-      <label for = "searchword" class = "col-sm-2 control-label">Искать</label>
-        <div class = "col-sm-10">
-			<form method ="post" action="">
-            <div class = "col-sm-10"><input type = "text" class = "form-control" id = "searchword" placeholder = "Ad Hoc Networks" name = "word"></div>
-			<input type = "submit" value = "Поиск" class = "btn btn-primary" action = "sresults.php"/>
-			</form>
-        </div>
+    <div class = "col-lg-4 "></div>
+    <div class = "col-lg-4 "></div>
+    <div class = "col-lg-4 "></div>
+
 
 
 
@@ -77,46 +74,4 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
-
-<?php
-	if($_SERVER["REQUEST_METHOD"]=="POST")
-	{
-		$Phrase = $_POST["word"];
-		$context = stream_context_create(array('http' => array(
-		    'method' => "POST",  
-		    'header' => "Content-Type: text/xml",
-		    'content' => CreateXMLRPC("RobotLauncher.Search", $Phrase)
-		)));
-		try{
-			$file = file_get_contents("http://127.0.0.1:4444/xmlrpc", false, $context);
-		}
-		catch(Exception $e){
-			throw new Exception ('Ошибка сервера');
-		}
-		
-		//print($file);
-		$respXml = new SimpleXMLElement($file);
-		$xml = new SimpleXMLElement($respXml->xpath("//value")[0]);
-		echo '<table>';
-
-		foreach ($xml->result as $res)
-		{
-			printf("  <tr class =\"jumbotron\"><td>%s</td><td><a href=\"%s\">Перейти</a></td></tr>\n",$res->t, $res->link);
-		}	
-		echo '</table>';
-	}
-	
-	// Р Р°Р· РЅР°Рј Р·Р°РїСЂРµС‰РµРЅРѕ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РіРѕС‚РѕРІС‹Р№ XML-RPC - СЃРґРµР»Р°РµРј СЃРІРѕР№!
-	function CreateXMLRPC($ClassName, $SearchWord)
-	{
-		$request = new SimpleXMLElement("<methodCall/>");
-		$request->addChild("methodName",$ClassName);
-		$params = $request->addChild("params");
-		$param = $params->addChild("param");
-		$value = $param->addChild("value");
-		$value->addChild("string",$SearchWord);
-		return $request->asXML();
-	}
-	
-?>
 </body>
