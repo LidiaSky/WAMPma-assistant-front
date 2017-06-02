@@ -7,12 +7,24 @@ body {
 
     background-image: url(images/1.jpg);
 }
-opacitycss {
-    opacitycss: 0.1;
+.opacitycss {
+    opacity: 0.96;
     margin-top:20px;
     margin-bottom:40px;
 }
 .bgr {
     background:white;
 }
+.topsearch {
 
+    padding-top:22px;
+}
+
+.search_res_bg {
+    border-radius:6px;
+    background-color: #eee;
+    opacity:0.95;
+}
+.login_box {
+    margin-top:130px;
+}

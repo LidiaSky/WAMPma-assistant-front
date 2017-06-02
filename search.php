@@ -44,7 +44,7 @@
 </div>
 
 <div class = "container search_container_bg">
-    <div class = "jumbotron text-center ">
+    <div class = "jumbotron text-center topsearch">
       <label for = "searchword" class = "col-sm-2 control-label">Искать</label>
         <div class = "col-sm-10">
 			<form method ="post" action="">
@@ -65,7 +65,7 @@
             <p> 2017 Кафедра вычислительных технологий КубГУ</p>
         </div>
         <div class = "navbar-text pull-right">
-            <a href="#"><i class = "fa fa-facebook-square"></i></a>
+            <a href="http://www.cs.kubsu.ru/ru/about.html"><i class = "fa fa-external-link"></i></a>
 
 
         </div>
@@ -97,13 +97,19 @@
 		//print($file);
 		$respXml = new SimpleXMLElement($file);
 		$xml = new SimpleXMLElement($respXml->xpath("//value")[0]);
-		echo '<table>';
+
+		$counter = 1;
+		echo '<div class = "container search_res_bg"><table>';
+
 
 		foreach ($xml->result as $res)
 		{
-			printf("  <tr class =\"jumbotron\"><td>%s</td><td><a href=\"%s\">Перейти</a></td></tr>\n",$res->t, $res->link);
+			printf(" <tr><td><h4>$counter.". "%s</h4></h4></td><td><a href=\"%s\" class=\"btn btn-white btn-default active\">
+        <i class=\"fa fa-external-link\" aria-hidden=\"true\"></i> Перейти</a></td></tr>\n",$res->t, $res->link);
+			$counter ++;
 		}	
-		echo '</table>';
+		echo '</table></div>';
+
 	}
 	
 	// Р Р°Р· РЅР°Рј Р·Р°РїСЂРµС‰РµРЅРѕ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РіРѕС‚РѕРІС‹Р№ XML-RPC - СЃРґРµР»Р°РµРј СЃРІРѕР№!

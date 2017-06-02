@@ -46,7 +46,24 @@
 
 <div class = "container search_container_bg">
     <div class = "col-lg-4 "></div>
-    <div class = "col-lg-4 "></div>
+    <div class = "col-lg-4 ">
+        <div class = "jumbotron login_box">
+            <form>
+                <div class = "form-group">
+                    <input type = "email"  class = "form-control" placeholder="Логин">
+                </div>
+                <div class = "form-group">
+                    <input type = "password"  class = "form-control" placeholder="Пароль">
+                </div>
+                <div class = "checkbox">
+                    <label>
+                    <input type = "checkbox">
+                        Запомнить меня
+                    </label>
+                </div>
+                <button type = "submit" class = "btn btn-primary from-control">Войти</button>
+            </form>
+    </div>
     <div class = "col-lg-4 "></div>
 
 
@@ -62,7 +79,7 @@
             <p> 2017 Кафедра вычислительных технологий КубГУ</p>
         </div>
         <div class = "navbar-text pull-right">
-            <a href="#"><i class = "fa fa-facebook-square"></i></a>
+            <a href="http://www.cs.kubsu.ru/ru/about.html"><i class = "fa fa-external-link"></i></a>
 
 
         </div>
