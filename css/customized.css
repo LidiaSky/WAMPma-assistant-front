@@ -34,3 +34,12 @@ body {
     opacity: 0.96;
     background-color: #eee;
 }
+.col-sm-8 {
+    margin-top: 20px;
+    /* border-color: aqua; */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    /* border-bottom-width: 2px; */
+    color: black;
+    box-shadow: 2px 4px 0px #888888;
+}

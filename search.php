@@ -98,17 +98,16 @@
 		$respXml = new SimpleXMLElement($file);
 		$xml = new SimpleXMLElement($respXml->xpath("//value")[0]);
 
-		$counter = 1;
-		echo '<div class = "container search_res_bg"><table>';
+
+		printf( "<div class = \"container search_res_bg\" style = \"padding-top:34px;\"><div class = \"col-sm-12\"><h5><strong>Вы искали:</strong> %s</h5>",$Phrase);
 
 
 		foreach ($xml->result as $res)
 		{
-			printf(" <tr><td><h4>$counter.". "%s</h4></h4></td><td><a href=\"%s\" class=\"btn btn-white btn-default active\">
-        <i class=\"fa fa-external-link\" aria-hidden=\"true\"></i> Перейти</a></td></tr>\n",$res->t, $res->link);
-			$counter ++;
+			printf("<div class =\"col-sm-6\"  style = \";border: 1px solid #ccc; padding-bottom:5px;border-radius: 4px; color: black;box-shadow: 2px 4px 16px #888888;\"> <h4><strong><a href=%s >%s</a></strong></h4></h4><h4>Релевантность :%s</h4><a href=\"%s\" class=\"btn btn-white btn-default active\">
+        <i class=\"fa fa-external-link\" aria-hidden=\"true\"></i></a></td></tr>\n</div>",$res->link,$res->t,substr($res->score,0,5), $res->link);
 		}	
-		echo '</table></div>';
+		echo '</div></div>';
 
 	}
 	
